@@ -10,7 +10,22 @@ namespace SortingAlgorithm
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Random random = new Random();
+            int[] arrayInt = new int[20];
+            for (int i = 0; i < arrayInt.Length; i++)
+            {
+                arrayInt[i] = random.Next(1, 20);
+            }
+            Console.WriteLine("Randiom Numbers");
+
+            displayArray(arrayInt);
+        }
+        static void displayArray(int[] arr)
+        {
+            foreach (var item in arr)
+            {
+                Console.Write(item + ", ");
+            }
         }
     }
 }
