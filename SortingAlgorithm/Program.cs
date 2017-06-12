@@ -19,19 +19,30 @@ namespace SortingAlgorithm
             Console.WriteLine("Randiom Numbers");
 
             displayArray(arrayInt);
+            Console.WriteLine("\n\nSort the array");
+            sorting(arrayInt);
+
+            displayArray(arrayInt);
+
+            Console.WriteLine("\n\nFisher yates shuffle");
+            int temp = 0;
+            for (int i = arrayInt.Length - 1; i > 0; i--)
+            {
+                temp = random.Next(0, arrayInt.Length);
+                swap(arrayInt, i, temp);
+            }
+            displayArray(arrayInt);
 
             Console.WriteLine("\n\nQuick Sort");
 
             quickSort(arrayInt);
 
-            Console.ReadKey();
-        }
-        static void displayArray(int[] arr)
-        {
-            foreach (var item in arr)
-            {
-                Console.Write(item + ", ");
-            }
+            //Console.WriteLine("\n\nQuick Sort");
+            //Console.WriteLine(arrayInt.Length - 1);
+            displayArray(arrayInt);
+
+            Console.ReadLine();
+
         }
 
         static void swap(int[] array, int a, int b)
@@ -57,6 +68,7 @@ namespace SortingAlgorithm
             quickSort(array, pIndex, end);
 
         }
+
         static int partition(int[] array, int start, int end, int index)
         {
             while (start < end)
@@ -94,6 +106,14 @@ namespace SortingAlgorithm
                         arrayInt[j] = temp;
                     }
                 }
+            }
+        }
+
+        static void displayArray(int[] arr)
+        {
+            foreach (var item in arr)
+            {
+                Console.Write(item + ", ");
             }
         }
     }
