@@ -19,12 +19,81 @@ namespace SortingAlgorithm
             Console.WriteLine("Randiom Numbers");
 
             displayArray(arrayInt);
+
+            Console.WriteLine("\n\nQuick Sort");
+
+            quickSort(arrayInt);
+
+            Console.ReadKey();
         }
         static void displayArray(int[] arr)
         {
             foreach (var item in arr)
             {
                 Console.Write(item + ", ");
+            }
+        }
+
+        static void swap(int[] array, int a, int b)
+        {
+            int temp = array[a];
+            array[a] = array[b];
+            array[b] = temp;
+        }
+
+        static void quickSort(int[] array)
+        {
+            quickSort(array, 0, array.Length - 1);
+        }
+        static void quickSort(int[] array, int start, int end)
+        {
+            if (start >= end)
+            {
+                return;
+            }
+            int pivot = array[(start + end) / 2];
+            int pIndex = partition(array, start, end, pivot);
+            quickSort(array, start, pIndex - 1);
+            quickSort(array, pIndex, end);
+
+        }
+        static int partition(int[] array, int start, int end, int index)
+        {
+            while (start < end)
+            {
+                while (array[start] < index)
+                {
+                    start++;
+                }
+                while (array[end] > index)
+                {
+                    end--;
+                }
+                if (start <= end)
+                {
+                    swap(array, start, end);
+                    start++;
+                    end--;
+
+                }
+            }
+            return start;
+
+        }
+        static void sorting(int[] arrayInt)
+        {
+            int temp = 0;
+            for (int i = 0; i < arrayInt.Length; i++)
+            {
+                for (int j = 0; j < arrayInt.Length; j++)
+                {
+                    if (arrayInt[i] < arrayInt[j])
+                    {
+                        temp = arrayInt[i];
+                        arrayInt[i] = arrayInt[j];
+                        arrayInt[j] = temp;
+                    }
+                }
             }
         }
     }
